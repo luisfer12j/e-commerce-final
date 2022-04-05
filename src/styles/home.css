@@ -1,0 +1,34 @@
+.products-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products-list li{
+   
+    width: 321px;
+    height: 416px;
+    border: solid #dcd9d9 1px;
+    border-radius: 8px;
+    
+}
+
+.card-product{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    color: #515151
+    ;
+}
+
+.card-product img{
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+}
+
+.title-product{
+    font-size: 1.2rem;
+}
