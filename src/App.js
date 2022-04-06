@@ -11,9 +11,10 @@ function App() {
     <div className="App">
       <HashRouter>
         {isLoading && <LoadingScreen />}
+
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/shop/:id" element={<ProductDetail />} />
         </Routes>
       </HashRouter>
     </div>
