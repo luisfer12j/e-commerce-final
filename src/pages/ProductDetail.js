@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getProductsThunk } from "../redux/actions";
+import { addProductThunk, getProductsThunk } from "../redux/actions";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const [counter, setCounter] = useState(1);
 
   useEffect(() => {
     dispatch(getProductsThunk());
@@ -48,9 +49,33 @@ const ProductDetail = () => {
                   <h3>Price</h3>
                   <p>{product?.price}</p>
                 </div>
-                <div></div>
+                <div>
+                  <div className="counter-container">
+                    <button
+                      onClick={() => {
+                        if (counter > 1) {
+                          setCounter(counter - 1);
+                        }
+                      }}
+                    >
+                      -
+                    </button>
+                    <p>{counter}</p>
+                    <button onClick={() => setCounter(counter + 1)}>+</button>
+                  </div>
+                  <button
+                    onClick={() => {
+                      const body = {
+                        id: id,
+                        quantity: counter,
+                      };
+                      dispatch(addProductThunk(body));
+                    }}
+                  >
+                    Add to cart
+                  </button>
+                </div>
               </div>
-              <button>Add to cart</button>
             </div>
             <p className="product-description">{product?.description}</p>
           </div>

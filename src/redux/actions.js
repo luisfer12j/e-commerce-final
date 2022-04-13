@@ -6,6 +6,10 @@ export const actions = {
   setCategories: "SET_CATEGORIES",
 };
 
+const getConfig = () => ({
+  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+});
+
 export const setIsLoading = (isLoading) => ({
   type: actions.setIsLoading,
   payload: isLoading,
@@ -63,6 +67,19 @@ export const filterNameThunk = (search) => {
         `https://ecommerce-api-react.herokuapp.com/api/v1/products?query=${search}`
       )
       .then((res) => dispatch(setProducts(res.data.data.products)))
+      .finally(() => dispatch(setIsLoading(false)));
+  };
+};
+
+export const addProductThunk = (body) => {
+  return (dispatch) => {
+    dispatch(setIsLoading(true));
+    axios
+      .post(
+        "https://ecommerce-api-react.herokuapp.com/api/v1/cart",
+        body,
+        getConfig()
+      )
       .finally(() => dispatch(setIsLoading(false)));
   };
 };
