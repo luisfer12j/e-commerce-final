@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -10,6 +10,7 @@ import {
 import "../styles/navbar.css";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [signUp, setSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState("");
@@ -55,16 +56,29 @@ const NavBar = () => {
         <div>
           <strong onClick={() => navigate("/")}>e-commerce</strong>
         </div>
+
         <button onClick={() => setIsOpen(!isOpen)}>
           <i className="fa-solid fa-user"></i>
         </button>
-        <button onClick={() => navigate("/purchases")}>
+        <button
+          onClick={() => {
+            {
+              localStorage.getItem("token")
+                ? navigate("/purchases")
+                : setIsOpen(!isOpen);
+            }
+          }}
+        >
           <i className="fa-solid fa-box-archive"></i>
         </button>
         <button
           onClick={() => {
-            setIsOpenCart(!isOpenCart);
-            dispatch(getCartThunk());
+            if (localStorage.getItem("token")) {
+              setIsOpenCart(!isOpenCart);
+              dispatch(getCartThunk());
+            } else {
+              setIsOpen(!isOpen);
+            }
           }}
         >
           <i className="fa-solid fa-cart-shopping"></i>
@@ -93,6 +107,10 @@ const NavBar = () => {
                 value={password}
               />
               <button>Log in</button>
+              <p>
+                Don't have an account?{" "}
+                <p onClick={() => setSignUp(!signUp)}>sign up</p>
+              </p>
               {isLogin && <p>{isLogin}</p>}
             </>
           )}
