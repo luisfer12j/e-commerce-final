@@ -33,7 +33,7 @@ const ProductDetail = () => {
         );
     }
   }, [product, setProductsSimilar]);
-  console.log(productsSimilar);
+
   return (
     <section>
       <div className="product-info">

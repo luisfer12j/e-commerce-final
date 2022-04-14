@@ -4,10 +4,18 @@ const INITIAL_STATE = {
   isLoading: false,
   products: [],
   categories: [],
+  cart: [],
+  purchases: [],
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case actions.setPurchases:
+      return {
+        ...state,
+        purchases: action.payload,
+      };
+
     case actions.setIsLoading:
       return {
         ...state,
@@ -24,6 +32,12 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         categories: action.payload,
+      };
+
+    case actions.setCart:
+      return {
+        ...state,
+        cart: action.payload,
       };
 
     default:
