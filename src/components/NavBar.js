@@ -20,12 +20,11 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    let totalFinal = 0
+    let subTotal = 0
     cart.forEach(product=>{
-      totalFinal= (Number(product.price) * Number(product.productsInCart.quantity)) + totalFinal
-      console.log(totalFinal)
+      subTotal= (Number(product.price) * Number(product.productsInCart.quantity)) + subTotal
     })
-    setTotal(totalFinal)
+    setTotal(subTotal)
   },[cart, setTotal])
 
 
