@@ -14,11 +14,20 @@ const NavBar = () => {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState("");
   const [isOpenCart, setIsOpenCart] = useState(false);
-
+  const [total, setTotal] = useState(0);
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    let totalFinal = 0
+    cart.forEach(product=>{
+      totalFinal= (Number(product.price) * Number(product.productsInCart.quantity)) + totalFinal
+      console.log(totalFinal)
+    })
+    setTotal(totalFinal)
+  },[cart, setTotal])
+
 
   const logIn = (e) => {
     e.preventDefault();
@@ -109,7 +118,10 @@ const NavBar = () => {
             ))}
           </ul>
           {cart.length !== 0 ? (
-            <button onClick={() => dispatch(doPurchaseThunk())}>Buy</button>
+            <div>
+              <p>{total}</p>
+              <button onClick={() => dispatch(doPurchaseThunk())}>Buy</button>
+            </div>
           ) : (
             <p>Empty cart</p>
           )}
