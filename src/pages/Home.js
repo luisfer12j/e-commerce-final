@@ -6,6 +6,7 @@ import {
   getCategoriesThunk,
   getProductsThunk,
   filterNameThunk,
+  addProductThunk,
 } from "../redux/actions";
 import "../styles/home.css";
 
@@ -27,50 +28,63 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <section className="section-container">
       <form className="input-form" onSubmit={submit}>
         <input
+          className="input-search"
           type="text"
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           placeholder="what are you looking for?"
         />
-        <button>Search</button>
+        <button className="button-search">Search</button>
       </form>
+      <main className="main">
+        <aside className="aside">
+          <h2 className="categories-h2">Categories</h2>
+          <ul className="categories-list">
+            <button className="category-button" onClick={() => dispatch(getProductsThunk())}>
+              All Products
+            </button>
 
-      <ul>
-        <h2>Categories</h2>
-        <button onClick={() => dispatch(getProductsThunk())}>
-          All Products
-        </button>
+            {categories.map((category) => (
+              <button
+                className="category-button"
+                key={category.id}
+                onClick={() => dispatch(filterCategoryThunk(category.id))}
+              >
+                {category.name}
+              </button>
+            ))}
+          </ul>
+        </aside>
 
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => dispatch(filterCategoryThunk(category.id))}
-          >
-            {category.name}
-          </button>
-        ))}
-      </ul>
+        {products.length === 0 && <p>Products not found</p>}
 
-      {products.length === 0 && <p>Products not found</p>}
-
-      <ul className="products-list">
-        {products.map((product) => (
-          <li key={product.id}>
-            <Link to={`/shop/${product.id}`} className="card-product">
-              <img src={product.productImgs[0]} alt="product img" />
-              <div>
-                <h2 className="title-product">{product.title}</h2>
-                <p>Price</p>
-                <p>$ {product.price}</p>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <ul className="products-list">
+          {products.map((product) => (
+            <li key={product.id}>
+              <Link to={`/shop/${product.id}`} className="card-product">
+                <img src={product.productImgs[0]} alt="product img" />
+                <div className="text-container">
+                  <h2 className="title-product">{product.title}</h2>
+                  <p>Price</p>
+                  <h3>$ {product.price}</h3>
+                </div>
+              </Link>
+              <button className="button-add-cart" onClick={()=>{
+                    const body = {
+                      id: product.id,
+                      quantity: "1",
+                    };
+                    dispatch(addProductThunk(body));
+                    }
+                }><i className="fa-solid fa-cart-shopping"></i></button>
+            </li>
+          ))}
+        </ul>
+      </main>
+    </section>
   );
 };
 

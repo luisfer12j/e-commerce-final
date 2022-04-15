@@ -1,16 +1,107 @@
-.products-list{
-    list-style: none;
+/*
+=========================
+======SEARCH-FORM========
+=========================
+*/
+
+.section-container{
+    width: 100%;
+    height: auto;
+    padding: 50px 0px;
+}
+
+.input-form{
+    height: 45px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.input-search{
+    width: 80%;
+    height: 100%;
+    border: 1px solid var(--light-gray);
+    font-size: .9rem;
+    padding: 5px 14px;
+}
+
+.button-search{
+    width: 20%;
+    height: 100%;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+/*
+=========================
+=======CATEGORIES========
+=========================
+*/
+
+.main{
+    display: flex;
+    padding: 40px 50px;
+    width: 100%;
+    height: auto
+}
+
+.aside{
+    width: 15%;
+    padding: 0 50px;
+}
+
+.categories-h2{
+    border-bottom: 2px solid var(--light-gray);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #515151;
+    width: 100%;
+}
+
+.categories-list{
     display: flex;
     flex-wrap: wrap;
 }
 
+.category-button{
+    width: 100%;
+    text-align: start;
+    background-color: transparent;
+    border: none;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #515151;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.category-button:hover{
+    font-weight: 600;
+}
+
+/*
+=========================
+======PRODUCTS-LIST======
+=========================
+*/
+
+.products-list{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 85%;
+    padding-left: 100px;
+}
+
 .products-list li{
-   
     width: 321px;
     height: 416px;
     border: solid #dcd9d9 1px;
     border-radius: 8px;
-    
+    margin: 0 70px 70px 0;
+    position: relative;
 }
 
 .card-product{
@@ -29,6 +120,29 @@
     object-fit: contain;
 }
 
+.text-container{
+    height: 30%;
+    border-top: 1px solid var(--light-gray);
+    padding: 20px;
+}
+
 .title-product{
     font-size: 1.2rem;
+}
+
+.button-add-cart{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

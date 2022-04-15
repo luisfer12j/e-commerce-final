@@ -1,9 +1,142 @@
+.nav-bar{
+    width: 100vw;
+    height: 100px;
+}
+
+.nav{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    border-bottom:1px solid var(--light-gray);
+    background-color: #fff;
+    justify-content: space-between;
+    z-index: 9999;
+}
+
+.logo-container{
+    width: 55%;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container strong{
+    font-size: 2rem;
+    color: var(--primary);
+    padding: 14px 20px;
+    cursor: pointer;
+}
+
+.nav-button-container{
+    width: 15%;
+    border: none;
+    background-color: #fff;
+    border-left: 1px solid var(--light-gray);
+    color: var(--text-gray);
+    font-size: 1.4rem;
+}
+
 .cart-modal{
     position: fixed;
-    top: 0;
+    top: 70px;
     bottom: 0;
     right: 0;
     width: 20vw;
     background-color: #fff;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .3);
 }
+
+
+.login-modal{
+    position: fixed;
+    top: 70px;
+    right: 30%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.3);
+    transform: scale(0);
+    transition: 0.3s;
+    transform-origin: top;
+    width: 300px;
+    z-index: 99999;
+}
+
+.login-modal.open{
+    transform: scale(1);
+}
+
+.test-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.test-img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.test-text-container{
+    background-color: #d8f5fd;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+.test-text-container>div{
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.test-text-container>div>p{
+    margin-left: 10px;
+}
+
+.login-modal-container{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    
+}
+
+.input-container>input{
+    width: 100%;
+    border: 1px solid var(--light-gray);
+    font-size: 1rem;
+    height: 35px;
+    border-radius: 3px;
+}
+
+.login-button{
+    width: 100%;
+    border: none;
+    background-color: var(--primary);
+    height: 35px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.account-text{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.account-text>p{
+    font-size: .9rem;
+}
+
+.account-text>p>span{
+    cursor: pointer;
+    color: #2fa8f8;
+}
+

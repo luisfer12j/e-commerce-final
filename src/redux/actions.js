@@ -155,3 +155,12 @@ export const getPurchasesThunk = () => {
       .finally(() => dispatch(setIsLoading(false)));
   };
 };
+
+export const createNewAccountThunk = newUser =>{
+  return (dispatch) =>{
+    dispatch(setIsLoading(true));
+    axios.post('https://ecommerce-api-react.herokuapp.com/api/v1/users',newUser)
+      .then(()=>alert('New acconunt created successfully'))
+      .finally(()=>dispatch(setIsLoading(false)))
+  }
+}

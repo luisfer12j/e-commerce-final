@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Yantramanav,sans-serif;
+  color: #515151;
+}
+
+:root {
+  --primary: #f85555;
+  --light-gray: #dcd9d9;
+  --gray: #c7c7c7;
+  --dark-gray: #4f4f4f;
+  --text-gray: #ababab;
 }
