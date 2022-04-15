@@ -1,5 +1,5 @@
 .nav-bar{
-    width: 100vw;
+    width: 100%;
     height: 100px;
 }
 
@@ -34,18 +34,129 @@
     border-left: 1px solid var(--light-gray);
     color: var(--text-gray);
     font-size: 1.4rem;
+    cursor: pointer;
 }
+
+/*
+=====================
+=========CART========
+=====================
+*/
+
+
 
 .cart-modal{
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 70px;
     bottom: 0;
     right: 0;
     width: 20vw;
     background-color: #fff;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .3);
+    z-index: 99999;
+    overflow: auto;
 }
 
+.cart-modal-container{
+    flex: 1 1;
+}
+
+.cart-name{
+    margin: 20px;
+}
+
+.cart-list{
+    padding: 20px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 1 1;
+}
+
+.cart-product-container{
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.cart-product-description{
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.product-description{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.border{
+    width: 60px;
+    height: 30px;
+    border: 1px solid var(--light-gray);
+    border-radius: 3px;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.cart-product-delete{
+    border: none;
+    background-color: #fff;
+}
+
+.cart-product-delete>i{
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.product-price{
+    text-align: end;
+    font-size: 1rem;
+}
+
+.color-light-gray{
+    color: var(--text-gray);
+}
+
+.product-price>p>span{
+    font-weight: 600;
+}
+
+.cart-button-container{
+    width: 100%;
+    border-top: 1px solid var(--light-gray);
+    padding: 20px;
+}
+
+.cart-total-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.cart-total{
+    font-weight: 600;
+}
+
+.cart-button-container>button{
+    width: 100%;
+    height: 30px;
+    border: none;
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+/*
+=====================
+========LOGIN========
+=====================
+*/
 
 .login-modal{
     position: fixed;
@@ -140,3 +251,7 @@
     color: #2fa8f8;
 }
 
+.center{
+    text-align: center;
+    margin-bottom: 20px;
+}

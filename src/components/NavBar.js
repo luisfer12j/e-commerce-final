@@ -35,6 +35,10 @@ const NavBar = () => {
     setTotal(subTotal)
   },[cart, setTotal])
 
+  useEffect(()=>{
+
+  },[])
+
   const createNewAccount = e =>{
     e.preventDefault();
     const newUser ={
@@ -70,6 +74,7 @@ const NavBar = () => {
       )
       .then((res) => {
         localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem('userName', `${res.data.data.user.firstName} ${res.data.data.user.lastName}`)
         setIsLogin("");
         setEmail("");
         setPassword("");
@@ -113,12 +118,20 @@ const NavBar = () => {
       </nav>
       <div className={`login-modal ${isOpen ? 'open': ''}`}>
         {localStorage.getItem("token") ? (
-          <button
-            type="button"
-            onClick={() => localStorage.setItem("token", "")}
-          >
-            log out
-          </button>
+          <div className="test-container">
+            <img className="test-img" src="https://thumbs.dreamstime.com/b/icono-de-usuario-personas-vectoriales-vector-perfil-ilustraci%C3%B3n-persona-comercial-s%C3%ADmbolo-grupo-usuarios-masculino-195157776.jpg
+                " alt="" />
+            <div className="account-text">
+              <h3 className="center">{localStorage.getItem('userName')}</h3>
+              <p className="center">
+                <span onClick={() => {
+                  localStorage.setItem("token", "")
+                  localStorage.setItem("userName",'')
+                  setIsOpen(false)
+                  }}>Log out</span> 
+              </p>
+            </div>
+          </div>
         ) : (
             signUp ? 
             <form onSubmit={createNewAccount}>
@@ -167,7 +180,7 @@ const NavBar = () => {
                     <p>fh@gmail.com</p>
                   </div>
                   <div>
-                    <i class="fa-solid fa-lock"></i>
+                    <i className="fa-solid fa-lock"></i>
                     <p>12345678</p>
                   </div>
                 </div>
@@ -205,25 +218,39 @@ const NavBar = () => {
       </div>
       {isOpenCart && (
         <div className="cart-modal">
-          <h2>Cart</h2>
-          <ul>
-            {cart.map((item) => (
-              <li key={item.id}>
-                <Link to={`/shop/${item.id}`}>
-                  <p>{item.brand}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.productsInCart.quantity}</p>
-                  <p>{item.price}</p>
-                </Link>
-                <button onClick={() => dispatch(deleteProductThunk(item.id))}>
-                  <i className="fa-solid fa-trash-can"></i>
-                </button>
-              </li>
-            ))}
-          </ul>
+          <div className="cart-modal-container">
+            <h2 className="cart-name">Cart</h2>
+            <ul className="cart-list">
+              {cart.map((item) => (
+                <li className="cart-product-container" key={item.id}>
+                  <Link className="cart-product-description" to={`/shop/${item.id}`}>
+                    <div className="product-description">
+                      <div>
+                        <p className="color-light-gray">{item.brand}</p>
+                        <h3>{item.title}</h3>
+                        <div className="border">{item.productsInCart.quantity}</div>
+                      </div>
+                      <div>
+                        <button className="cart-product-delete" onClick={() => dispatch(deleteProductThunk(item.id))}>
+                          <i className="fa-solid fa-trash-can"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="product-price ">
+                      <p className="color-light-gray">Price: <span>{`$${item.price}`}</span></p>
+                    </div>
+                  </Link>
+                  
+                </li>
+              ))}
+            </ul>
+          </div>
           {cart.length !== 0 ? (
-            <div>
-              <p>Total: {`$${total}`}</p>
+            <div className="cart-button-container">
+              <div className="cart-total-container">
+                <p className="color-light-gray">Total:</p>
+                <p className="cart-total">{`$${total}`}</p>
+              </div>
               <button onClick={() => dispatch(doPurchaseThunk())}>Buy</button>
             </div>
           ) : (

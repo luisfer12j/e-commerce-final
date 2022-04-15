@@ -1,0 +1,36 @@
+.purchases{
+    width: 900px;
+    margin: 0 auto;
+}
+
+.purchases>h1{
+    margin-bottom: 50px;
+}
+
+.purchase-container{
+    width: 100%;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.date-container{
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.purchases-products-list{
+    padding: 0 20px;
+    list-style: none;
+}
+
+.purchases-products-list>li{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.space{
+    width: 50%;
+}

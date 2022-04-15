@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import NavBar from "./components/NavBar";
 import Purchases from "./pages/Purchases";
+import Footer from "./components/Footer";
 
 function App() {
   const isLoading = useSelector((state) => state.isLoading);
@@ -19,6 +20,7 @@ function App() {
           <Route path="/shop/:id" element={<ProductDetail />} />
           <Route path="/purchases" element={<Purchases />} />
         </Routes>
+        <Footer/>
       </HashRouter>
     </div>
   );

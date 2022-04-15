@@ -1,0 +1,31 @@
+.footer{
+    background: #3c3c3b;
+    padding: 60px 0;
+}
+
+.footer>p{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.buttons-container{
+    text-align: center;
+}
+
+.button-footer{
+    background: #50504f;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 1.4rem;
+    height: 50px;
+    line-height: 2.45;
+    margin: 0 10px;
+    text-decoration: none;
+    width: 50px;
+}
+
+.button-footer>i{
+    color: #fff;
+}

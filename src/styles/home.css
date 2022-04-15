@@ -102,6 +102,12 @@
     border-radius: 8px;
     margin: 0 70px 70px 0;
     position: relative;
+    transform: scale(1);
+    transition: .3s;
+}
+
+.products-list li:hover{
+    transform: scale(1.1);
 }
 
 .card-product{
@@ -140,9 +146,12 @@
     border-radius: 50%;
     border: none;
     background-color: var(--primary);
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.button-add-cart>i{
+    color: #fff;
 }
