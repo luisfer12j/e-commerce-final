@@ -231,16 +231,15 @@ const NavBar = () => {
                         <div className="border">{item.productsInCart.quantity}</div>
                       </div>
                       <div>
-                        <button className="cart-product-delete" onClick={() => dispatch(deleteProductThunk(item.id))}>
-                          <i className="fa-solid fa-trash-can"></i>
-                        </button>
                       </div>
                     </div>
                     <div className="product-price ">
                       <p className="color-light-gray">Price: <span>{`$${item.price}`}</span></p>
                     </div>
                   </Link>
-                  
+                        <button className="cart-product-delete" onClick={() => dispatch(deleteProductThunk(item.id))}>
+                          <i className="fa-solid fa-trash-can"></i>
+                        </button>
                 </li>
               ))}
             </ul>
@@ -254,7 +253,13 @@ const NavBar = () => {
               <button onClick={() => dispatch(doPurchaseThunk())}>Buy</button>
             </div>
           ) : (
-            <p>Empty cart</p>
+            <div className="cart-button-container">
+              <div className="cart-total-container">
+                <p className="color-light-gray">Total:</p>
+                <p className="cart-total">0</p>
+              </div>
+              <button >Buy</button>
+            </div>
           )}
         </div>
       )}

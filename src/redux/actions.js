@@ -92,13 +92,13 @@ export const addProductThunk = (body) => {
         body,
         getConfig()
       )
+      .then(()=>dispatch(getCartThunk()))
       .finally(() => dispatch(setIsLoading(false)));
   };
 };
 
 export const getCartThunk = () => {
   return (dispatch) => {
-    dispatch(setIsLoading(true));
     axios
       .get("https://ecommerce-api-react.herokuapp.com/api/v1/cart", getConfig())
       .then((res) => {
@@ -106,11 +106,10 @@ export const getCartThunk = () => {
         dispatch(setCart(res.data.data.cart.products));
       })
       .catch((error) => {
-        if (error.response.data.estatus === 404) {
+        if (error.response.status === 404) {
           dispatch(setCart([]));
         }
       })
-      .finally(() => dispatch(setIsLoading(false)));
   };
 };
 
@@ -122,7 +121,9 @@ export const deleteProductThunk = (id) => {
         `https://ecommerce-api-react.herokuapp.com/api/v1/cart/${id}`,
         getConfig()
       )
-      .then(() => dispatch(getCartThunk()))
+      .then(() => {
+        dispatch(getCartThunk());
+      })
       .finally(() => dispatch(setIsLoading(false)));
   };
 };
@@ -136,23 +137,27 @@ export const doPurchaseThunk = () => {
         {},
         getConfig()
       )
-      .then(() => alert("Purchase successfully"))
+      .then(() => {
+        dispatch(getCartThunk())
+        alert("Purchase successfully")
+      })
       .finally(() => dispatch(setIsLoading(false)));
   };
 };
 
 export const getPurchasesThunk = () => {
   return (dispatch) => {
-    dispatch(setIsLoading(true));
+    // dispatch(setIsLoading(true));
     axios
       .get(
         "https://ecommerce-api-react.herokuapp.com/api/v1/purchases",
         getConfig()
       )
       .then((res) => {
-        dispatch(setPurchases(res.data.data.purchases));
+        dispatch(setPurchases(res.data.data.purchases))
+        dispatch(getCartThunk())
       })
-      .finally(() => dispatch(setIsLoading(false)));
+      .finally(() => dispatch(getCartThunk()));
   };
 };
 
